@@ -1,0 +1,12 @@
+<div class="<?php echo $this->class ?> block"<?php echo $this->cssID ?>>
+    <h2><?php echo $this->headline ?></h2>
+	<ul>
+	<?php foreach ($this->kunden as $kunde): ?>
+		<?php if ($kunde->url) : ?>
+		<li><a href="http://<?php echo $kunde->url ?>"><?php echo $kunde->name ?></a></li>
+		<?php else : ?>
+		<li><?php echo $kunde->name; ?></li>		
+		<?php endif; ?>
+	<?php endforeach ?>
+	</ul>
+</div>

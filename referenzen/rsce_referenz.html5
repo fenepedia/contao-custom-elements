@@ -1,0 +1,11 @@
+<div class="<?php echo $this->class ?> block"<?php echo $this->cssID ?>>
+<?php foreach ($this->referenzen as $item): ?>
+<div class="stimme block">
+<blockquote>
+<p><strong><?php echo $item->name; ?></strong></p>
+<p><?php echo $item->spruch; ?></p>
+</blockquote>
+
+</div>
+<?php endforeach ?>
+</div>

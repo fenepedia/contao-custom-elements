@@ -1,0 +1,30 @@
+<div class="clearfix"></div>
+<div class="<?php echo $this->class ?> block"<?php echo $this->cssID ?>>
+
+	<?php if($this->headline) : ?>
+	<h2><?php echo $this->headline ?></h2>
+	<?php endif; ?>
+
+	<?php $mycounter = 1; ?>
+	<?php foreach ($this->tmembers as $member): ?>
+		<section class="team-item<?php echo($mycounter % 2 ? '' : ' last'); ?>">
+
+			<?php if ($image = $this->arrData['getImageObject']($member->image, array(230, 230))): ?>
+				<img src="<?php echo $image->src ?>" alt="<?php echo $image->alt ?: $member->name ?>"<?php echo $image->imgSize ?>>
+			<?php endif ?>
+			<div class="member-details"</div>
+			<strong><?php echo $member->name ?></strong><br>
+			<?php echo $member->z1 ?><br>
+			<?php if ($member->z2) : ?><?php echo $member->z2 ?>
+			<?php else : ?>
+			&nbsp
+			<?php endif; ?>
+			<p><?php echo($member->telefon ? "<i class='fa fa-phone'></i> $member->telefon <br>" :''); ?>
+			<i class="fa fa-envelope"></i> {{email::<?php echo $member->email ?>}}</p>
+			</div>
+
+		</section>
+	<?php $mycounter++; ?>
+	<?php endforeach ?>
+
+</div>

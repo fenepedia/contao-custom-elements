@@ -1,0 +1,21 @@
+<div class="<?php echo $this->class ?> block"<?php echo $this->cssID ?>>
+                                     <table class="table-garagen">
+                                          <tbody>
+                                          <?php $i = 1; ?>
+											<?php foreach ($this->stellplatz as $platz): ?>
+											<tr class="<?php echo ($i % 2 ? 'odd ' : 'even '); echo $platz->status ?>">
+                                                <td class="col_0 col_first"><?php echo $platz->name ?></td>
+                                                <td class="col_1" ><?php echo ($platz->behinderung == 1 ? 'Behindertengerecht' : ''); ?></td>                                               
+                                                <?php if ($platz->status == 'verkauft') : ?>
+                                                <td class="col_2" colspan="2"><?php echo $platz->status ?></td>
+												<?php else : ?>
+                                                <td class="col_2"><?php echo $platz->preis ?> €</td>
+                                                <td class="col_3 col_last"><?php echo $platz->status ?></td>
+                                                <?php endif; ?>
+                                            </tr>
+											<?php $i++; ?>
+											<?php endforeach ?>
+											</tbody>
+                                        </table>
+                                        
+</div>

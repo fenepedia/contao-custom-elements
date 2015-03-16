@@ -1,0 +1,119 @@
+<div class="<?php echo $this->class ?> block"<?php echo $this->cssID ?>>
+    <?php foreach ($this->wohnung as $whg): ?>
+        <div class="whg-item">
+
+            <h3><?php echo $whg->name ?> | <span class="whgsize"><?php echo $whg->flaeche ?>m²</span></h3>
+            <div class="ce_colsetStart first ym-grid colcount_2 yaml4 col-33x66"><!-- first Column //-->
+                <div class="ym-g33 ym-gl col_1 first">
+                    <div class="ym-gbox-left">
+                        <?php if ($image = $this->arrData['getImageObject']($whg->image1, array())): ?>
+  <figure class="image_container image_grundriss">
+      <a href="<?php echo $image->src ?>" title="<?php $whg->name?>" data-lightbox="gr-<?php echo(str_replace(' ', '', $whg->name)); ?>">
+		  <i class="fa fa-plus-circle"></i>
+
+    <img src="<?php echo $image->src; ?>"<?php echo $this->imgSize; ?> alt="<?php echo 'Grundriss ' . $whg->name; ?>"<?php if ($this->title): ?> title="<?php echo $this->title; ?>" <?php echo $image->imgSize ?><?php endif; ?>>
+
+      </a>
+  </figure>
+                      <?php endif ?>
+
+
+
+
+                    </div>
+                </div>
+                <!-- second Column //-->
+                <div class="ce_colsetPart ym-g66 ym-gr col_2 last">
+                    <div class="ym-gbox-right" style="padding-left:0px;">
+
+                        <!-- Sub-Columns //-->
+                        <div class="ce_colsetStart ym-grid colcount_2 yaml4 col-50x50"><!-- first Column //-->
+                            <div class="ym-g50 ym-gl col_1 first">
+                                <div class="ym-gbox-left">
+                                        <table class="table-raeume">
+                                            <tbody>
+											<?php $i = 1; ?>
+                                            <?php foreach ($whg->raeume as $whgraum): ?>
+											<tr class="<?php echo ($i % 2 ? 'odd' : 'even'); ?>">
+                                                <td class="col_0 col_first"><?php echo $whgraum->raumname ?></td>
+                                                <td class="col_1 col_last"><?php echo $whgraum->raumqm ?> m²</td>
+                                            </tr>
+                                            <?php $i++; ?>
+                                            <?php endforeach ?>
+                                            </tbody>
+                                        </table>
+                                </div>
+                            </div>
+                            <!-- second Column //-->
+                            <div class="ce_colsetPart ym-g50 ym-gr col_2 last">
+                                <div class="ym-gbox-right" style="padding-left:25px;">
+                                    <div class="inhalt-rechts">
+                                     <table class="table-daten">
+                                          <tbody>
+											<tr class="row_blue row_border">
+                                                <td class="col_0 col_first">Gesamt</td>
+                                                <td class="col_1 col_last"><?php echo $whg->flaeche ?> m²</td>
+                                            </tr>
+                                            <?php if ($whg->status <> 'verkauft') : ?> 
+											<tr class="row_blue">
+                                                <td class="col_0 col_first">Kaufpreis</td>
+                                                <td class="col_1 col_last"><?php echo $whg->preis ?> €</td>
+                                            </tr>
+                                             <?php endif; ?>
+                                            <tr>
+                                                <td class="col_0 col_first"></td>
+                                                <td class="col_1 col_last"><div class="kaufstatus <?php echo $whg->status ?>"><?php echo $whg->status ?></div></td>
+                                            </tr>
+                                            
+                                            <?php if ($whg->garten): ?> 
+                                            <tr class="row_green row_border">
+                                                <td class="col_0 col_first">Erwerb Garten möglich</td>
+                                                <td class="col_1 col_last"><?php echo $whg->gartengroesse ?> m²</td>
+                                            </tr>
+                                            <tr class="row_green">
+                                                <td class="col_0 col_first">Kaufpreis</td>
+                                                <td class="col_1 col_last"><?php echo $whg->gartenpreis ?> €</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col_0 col_first"></td>
+                                                <td class="col_1 col_last"><?php if ($image = $this->arrData['getImageObject']($whg->gartenimage, array())): ?>
+											<a href="<?php echo $image->src; ?>" data-lightbox="garten-<?php echo(str_replace(' ', '', $whg->name)); ?>">Bild Garten anzeigen</a><?php endif ?></td>
+                                            </tr>
+                                            
+                                            <?php endif; ?>
+                                            </tbody>
+                                        </table>
+                                        
+   
+                                        <?php if ($image = $this->arrData['getImageObject']($whg->image2, array(300, 130))): ?>
+                                        	<h4>Lage im Haus</h4>
+											<img src="<?php echo $image->src ?>"
+											alt="<?php echo $image->alt ? : $whg->name ?>"<?php echo $image->imgSize ?>>
+										<?php endif ?>
+										
+										<?php if ($whg->sonstiges) : ?> 
+										<h4>Bemerkung:</h4>
+										<?php elseif ($whg->barrierefrei == 1) : ?> 										
+										<h4>Bemerkung:</h4>
+										<?php endif; ?>
+										<?php if ($whg->sonstiges) : ?> 
+                                            <?php echo $whg->sonstiges ?>
+                                        <?php endif; ?>
+                                        <?php if ($whg->barrierefrei == 1) : ?> 
+											<div class="barrierefrei">barrierefrei möglich</div>
+                                         <?php endif; ?>                                        
+	                                    </div>
+                                </div>
+                                                        			<a class="fahne-ansprech" href="{{env::url}}/{{env::request}}#ansprechpartner"><i class="fa fa-user"></i>Ihre Ansprechpartner anzeigen</a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <?php endforeach ?>
+
+</div>

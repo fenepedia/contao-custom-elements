@@ -1,0 +1,25 @@
+<div id="ansprechpartner" class="<?php echo $this->class ?> block"<?php echo $this->cssID ?>>
+	<<?php echo $this->hl ?>>
+            <?php echo $this->headline ?>
+        </<?php echo $this->hl ?>>
+	<?php $mycounter = 1; ?>
+	<?php foreach ($this->members as $member): ?>
+		<div class="team-item<?php echo($mycounter % 2 ? '' : ' last'); ?>">
+
+			<?php if ($image = $this->arrData['getImageObject']($member->image, array(130, 200))): ?>
+				<img src="<?php echo $image->src ?>" alt="<?php echo $image->alt ?: $member->name ?>"<?php echo $image->imgSize ?>>
+			<?php endif ?>
+			<div class="member-details">
+			<strong><?php echo $member->name ?></strong><br>
+			<?php if ($member->position): ?>
+			<?php echo '- ' . $member->position . ' -' ?><br>
+			<?php endif; ?> 
+			<?php echo($member->telefon ? "<i class='fa fa-phone'></i> $member->telefon <br>" :''); ?>
+			<i class="fa fa-envelope"></i> {{email::<?php echo $member->email ?>}}
+			</div>
+
+		</div>
+	<?php $mycounter++; ?>
+	<?php endforeach ?>
+
+</div>

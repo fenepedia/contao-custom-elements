@@ -1,0 +1,26 @@
+<div class="clearfix"></div>
+<div class="<?php echo $this->class ?> block"<?php echo $this->cssID ?>>
+
+	<?php if($this->headline) : ?>
+	<h2><?php echo $this->headline ?></h2>
+	<?php endif; ?>
+
+	<?php $mycounter = 1; ?>
+	<?php foreach ($this->mitglieder as $item): ?>
+		<section class="partner-item<?php echo($mycounter % 2 ? '' : ' last'); ?>">
+
+			<?php if ($image = $this->arrData['getImageObject']($item->image, array(120, 120))): ?>
+				<img src="<?php echo $image->src ?>" alt="<?php echo $image->alt ?: $item->name ?>"<?php echo $image->imgSize ?>>
+			<?php endif ?>
+			<p><?php echo $item->name ?><br>
+			<?php if($item->mylink) : ?>
+			<a target='_blank' href="http://<?php echo $item->mylink ?>"><?php echo ($item->mylinkalt ? $item->mylinkalt : $item->mylink );?></a>
+			<?php endif; ?>
+			</p>
+			
+
+		</section>
+	<?php $mycounter++; ?>
+	<?php endforeach ?>
+
+</div>

@@ -1,0 +1,18 @@
+<div class="clearfix"></div>
+<div class="<?php echo $this->class ?> block"<?php echo $this->cssID ?>>
+
+	<?php if($this->headline) : ?>
+	<h3><?php echo $this->headline ?></h3>
+	<?php endif; ?>
+
+	<?php $mycounter = 1; ?>
+	<?php foreach ($this->links as $item): ?>
+		<section class="link-item<?php echo($mycounter % 2 ? '' : ' last'); ?>">
+			<p><strong><?php echo $item->name; ?></strong><br>
+			<?php if($item->beschreibung): ?><?php echo $item->beschreibung; ?><br><? endif;?>
+			<a target='_blank' href="http://<?php echo $item->mylink ?>"><?php echo $item->mylink ?></a></p>
+		</section>
+	<?php $mycounter++; ?>
+	<?php endforeach ?>
+
+</div>

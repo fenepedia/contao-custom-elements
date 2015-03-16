@@ -1,0 +1,22 @@
+<div class="<?php echo $this->class ?> block"<?php echo $this->cssID ?>>
+
+	<?php if($this->headline) : ?>
+	<<?php echo $this->hl ?>><?php echo $this->headline ?></<?php echo $this->hl ?>>
+	<?php endif; ?>
+	<?php $mycounter = 1; ?>
+	<?php foreach ($this->members as $member): ?>
+		<div class="member-item <?php echo($mycounter % 2 ? '' : 'last'); ?>">
+
+			<?php if ($image = $this->arrData['getImageObject']($member->image, array(200, 160))): ?>
+				<img src="<?php echo $image->src ?>" alt="<?php echo $image->alt ?: $member->name ?>"<?php echo $image->imgSize ?>>
+			<?php endif ?>
+
+			<p class="member-content"><strong><?php echo $member->name ?></strong>
+			<br><?php echo $member->zusatz ?></p>
+			
+
+		</div>
+		<?php $mycounter++; ?>
+	<?php endforeach ?>
+
+</div>

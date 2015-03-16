@@ -1,0 +1,28 @@
+<div class="<?php echo $this->class ?> block"<?php echo $this->cssID ?>>
+
+	<?php $mycounter = 1; ?>
+	<?php foreach ($this->partners as $item): ?>
+		<section class="box-item<?php echo($mycounter % 5 ? '' : ' last'); ?>">
+
+			<?php if ($image = $this->arrData['getImageObject']($item->image, array(100, 100))): ?>
+				<img src="<?php echo $image->src ?>" alt="<?php echo $image->alt ?: $item->name ?>"<?php echo $image->imgSize ?>>
+			<?php endif ?>
+			
+			<?php if($item->name): ?>
+			<h4><?php echo $item->name; ?></h4>
+			<?php endif; ?>
+
+			<?php if($item->preis): ?>
+			<p>Preis: <br> <?php echo $item->preis; ?></p>
+			<?php endif; ?>
+
+			<?php if ($image = $this->arrData['getImageObject']($item->image2, array())): ?>
+			<a href="<?php echo $image->src; ?>" data-lightbox="farbe-<?php echo(str_replace(' ', '', $item->name)); ?>"><i class="fa fa-search-plus"></i></a>
+			<?php endif ?>
+
+
+		</section>
+	<?php $mycounter++; ?>
+	<?php endforeach ?>
+
+</div>

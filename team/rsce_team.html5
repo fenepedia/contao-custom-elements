@@ -1,0 +1,22 @@
+<div class="<?php echo $this->class ?> block"<?php echo $this->cssID ?>>
+
+	<?php $mycounter = 1; ?>
+	<?php foreach ($this->members as $member): ?>
+		<section class="team-item<?php echo($mycounter % 2 ? '' : ' last'); ?>">
+
+			<?php if ($image = $this->arrData['getImageObject']($member->image, array(120, 120))): ?>
+				<img src="<?php echo $image->src ?>" alt="<?php echo $image->alt ?: $member->name ?>"<?php echo $image->imgSize ?>>
+			<?php endif ?>
+			<div class="member-details"</div>
+			<h2><?php echo $member->name ?></h2>
+			- <?php echo $member->position ?> -
+			<p><i class="fa fa-envelope"></i> {{email::<?php echo $member->email ?>}}</p>
+			</div>
+
+
+
+		</section>
+	<?php $mycounter++; ?>
+	<?php endforeach ?>
+
+</div>
