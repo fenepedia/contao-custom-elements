@@ -7,3 +7,6 @@ Zusammengehörende config und html-Datei in den Templateordner kopieren.
 * rsce_name.html5
 
 Benötigt die Erweiterung rocksolid-custom-elements
+
+Eine aktuelle Sammlung findest du unter:
+https://github.com/marcuslelle/contao-rsce
